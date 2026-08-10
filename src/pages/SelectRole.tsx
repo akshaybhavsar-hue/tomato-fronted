@@ -14,7 +14,7 @@ const SelectRole = () => {
 
   const addRole = async () => {
     try {
-      const { data } = await axios.post(
+      const { data } = await axios.put(
         `${authService}/api/auth/add/role`,
         { role },
         {
@@ -39,12 +39,20 @@ const SelectRole = () => {
             <button
               key={r}
               onClick={() => setRole(r)}
-              className={`w-full rounded-xl border px-4 py-3 text-sm font-medium capitalize transition `}
+              className={`w-full rounded-xl border px-4 py-3 text-sm font-medium capitalize transition ${role === r ? 'border-[#E23774] bg-[#E23774] text-white' : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50 '}`}
             >
               Continueas {r}
             </button>
           ))}
         </div>
+        <button
+          className={`w-full rounded-xl px-4 py-3 text-sm font-semibold transition 
+            ${role ? 'border-[#E23774] bg-[#E23774] text-white hover:bg[#d32f3a]' : 'bg-gray-200  text-gray-400 cursor-not-allowed '}`}
+          onClick={addRole}
+          disabled={!role}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

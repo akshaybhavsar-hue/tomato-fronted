@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import { Toaster } from 'react-hot-toast';
 import SelectRole from './pages/SelectRole';
+import Navbar from './components/navbar';
 
 const publicRoutes = [{ path: '/login', element: <Login /> }];
 const pvtRoutes = [
@@ -15,6 +16,7 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           {publicRoutes.map((route) => (
             <Route path={route.path} element={route.element} />
